@@ -1,0 +1,246 @@
+{
+  "_source": false,
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "nested": {
+            "path": "issues",
+            "query": {
+              "range": {
+                "issues.number": {
+                  "gt": 100
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "aggs": {
+    "issues_month_histogram": {
+      "nested": {
+        "path": "issues"
+      },
+      "aggs": {
+        "filtered_agg": {
+          "filter": {
+            "bool": {
+              "should": [
+                {
+                  "multi_match": {
+                    "query": "few bugs",
+                    "fuzziness": 1,
+                    "fields": [
+                      "issues.title",
+                      "issues.title.shingles",
+                      "issues.body",
+                      "issues.body.shingles"
+                    ],
+                    "type": "most_fields"
+                  }
+                },
+                {
+                  "nested": {
+                    "path": "issues.issue_comments",
+                    "query": {
+                      "multi_match": {
+                        "query": "few bugs",
+                        "fuzziness": 1,
+                        "fields": [
+                          "issues.issue_comments.body",
+                          "issues.issue_comments.body.shingles"
+                        ],
+                        "type": "most_fields"
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "aggs": {
+            "hist": {
+              "date_histogram": {
+                "field": "issues.created_at",
+                "calendar_interval": "1y",
+                "format": "yyyy-MM-dd"
+              },
+              "aggs": {
+                "status": {
+                  "stats": {
+                    "field": "issues.number"
+                  }
+                }
+              }
+            },
+            "status": {
+              "stats": {
+                "field": "issues.number"
+              }
+            }
+          }
+        }
+      }
+    },
+    "commits_day_histogram ": {
+      "nested": {
+        "path": "branches.pushes"
+      },
+      "aggs": {
+        "filtered_agg": {
+          "filter": {
+            "bool": {
+              "must": [
+                {
+                  "nested": {
+                    "path": "branches.pushes.commits",
+                    "query": {
+                      "bool": {
+                        "must": [
+                          {
+                            "multi_match": {
+                              "query": "few bugs",
+                              "fuzziness": 1,
+                              "fields": [
+                                "branches.pushes.commits.message",
+                                "branches.pushes.commits.message.shingles"
+                              ],
+                              "type": "most_fields"
+                            }
+                          }
+                        ],
+                        "filter": [
+                          {
+                            "wildcard": {
+                              "branches.pushes.commits.author_email": {
+                                "value": "*.com"
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "aggs": {
+            "hist": {
+              "date_histogram": {
+                "field": "branches.pushes.created_at",
+                "calendar_interval": "1d",
+                "format": "yyyy-MM-dd"
+              }
+            }
+          }
+        }
+      }
+    },
+    "releases_month_histogram": {
+      "nested": {
+        "path": "releases"
+      },
+      "aggs": {
+        "filtered_agg": {
+          "filter": {
+            "multi_match": {
+              "query": "few bugs",
+              "fuzziness": 1,
+              "fields": ["releases.body", "releases.body.shingles"],
+              "type": "most_fields"
+            }
+          },
+          "aggs": {
+            "hist": {
+              "date_histogram": {
+                "field": "releases.created_at",
+                "calendar_interval": "1M",
+                "format": "yyyy-MM-dd"
+              }
+            }
+          }
+        }
+      }
+    },
+    "pull_requests_day_histogram": {
+      "nested": {
+        "path": "pull_requests"
+      },
+      "aggs": {
+        "filtered_agg": {
+          "filter": {
+            "bool": {
+              "should": [
+                {
+                  "multi_match": {
+                    "query": "few bugs",
+                    "fuzziness": 1,
+                    "fields": [
+                      "pull_requests.title",
+                      "pull_requests.title.shingles",
+                      "pull_requests.body",
+                      "pull_requests.body.shingles"
+                    ],
+                    "type": "most_fields"
+                  }
+                },
+                {
+                  "nested": {
+                    "path": "pull_requests.pull_request_reviews",
+                    "query": {
+                      "multi_match": {
+                        "query": "few bugs",
+                        "fuzziness": 1,
+                        "fields": [
+                          "pull_requests.pull_request_reviews.body",
+                          "pull_requests.pull_request_reviews.shingles"
+                        ],
+                        "type": "most_fields"
+                      }
+                    },
+                    "inner_hits": {
+                      "_source": ["pull_requests.pull_request_reviews.body"]
+                    }
+                  }
+                },
+                {
+                  "nested": {
+                    "path": "pull_requests.pull_request_reviews.pull_request_review_comments",
+                    "query": {
+                      "multi_match": {
+                        "query": "few bugs",
+                        "fuzziness": 1,
+                        "fields": [
+                          "pull_requests.pull_request_reviews.pull_request_review_comments.body",
+                          "pull_requests.pull_request_reviews.pull_request_review_comments.shingles"
+                        ],
+                        "type": "most_fields"
+                      }
+                    },
+                    "inner_hits": {
+                      "_source": [
+                        "pull_requests.pull_request_reviews.pull_request_review_comments"
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "aggs": {
+            "hist": {
+              "date_histogram": {
+                "field": "pull_requests.created_at",
+                "calendar_interval": "1M",
+                "format": "yyyy-MM-dd"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,311 @@
+{
+  "properties": {
+    "id": {
+      "type": "long"
+    },
+    "name": {
+      "type": "text",
+      "analyzer": "custom_ngram"
+    },
+    "branches": {
+      "type": "nested",
+      "properties": {
+        "name": {
+          "type": "text",
+          "analyzer": "custom_ngram"
+        },
+        "pushes": {
+          "type": "nested",
+          "properties": {
+            "actor_login": {
+              "type": "text",
+              "analyzer": "custom_ngram"
+            },
+            "size": {
+              "type": "integer"
+            },
+            "distinct_size": {
+              "type": "integer"
+            },
+            "created_at": {
+              "type": "date"
+            },
+            "id": {
+              "type": "long"
+            },
+            "commits": {
+              "type": "nested",
+              "properties": {
+                "id": {
+                  "type": "long"
+                },
+                "message": {
+                  "type": "text",
+                  "analyzer": "englando",
+                  "fields": {
+                    "shingles": {
+                      "type": "text",
+                      "analyzer": "custom_shingles"
+                    }
+                  }
+                },
+                "author_name": {
+                  "type": "text",
+                  "analyzer": "custom_ngram"
+                },
+                "author_email": {
+                  "type": "text",
+                  "analyzer": "custom_ngram"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "releases": {
+      "type": "nested",
+      "properties": {
+        "actor_login": {
+          "type": "text",
+          "analyzer": "custom_ngram"
+        },
+        "is_prerelease": {
+          "type": "boolean"
+        },
+        "is_draft": {
+          "type": "boolean"
+        },
+        "published_at": {
+          "type": "date"
+        },
+        "created_at": {
+          "type": "date"
+        },
+        "body": {
+          "type": "text",
+          "analyzer": "englando",
+          "fields": {
+            "shingles": {
+              "type": "text",
+              "analyzer": "custom_shingles"
+            }
+          }
+        },
+        "id": {
+          "type": "long"
+        },
+        "tag_name": {
+          "type": "keyword"
+        },
+        "release_name": {
+          "type": "keyword"
+        }
+      }
+    },
+    "issues": {
+      "type": "nested",
+      "properties": {
+        "actor_login": {
+          "type": "text",
+          "analyzer": "custom_ngram"
+        },
+        "title": {
+          "type": "text",
+          "analyzer": "englando",
+          "fields": {
+            "shingles": {
+              "type": "text",
+              "analyzer": "custom_shingles"
+            }
+          }
+        },
+        "number": {
+          "type": "integer"
+        },
+        "created_at": {
+          "type": "date"
+        },
+        "updated_at": {
+          "type": "date"
+        },
+        "closed_at": {
+          "type": "date"
+        },
+        "body": {
+          "type": "text",
+          "analyzer": "englando",
+          "fields": {
+            "shingles": {
+              "type": "text",
+              "analyzer": "custom_shingles"
+            }
+          }
+        },
+        "reactions": {
+          "type": "object"
+        },
+        "id": {
+          "type": "long"
+        },
+        "labels": {
+          "type": "keyword"
+        },
+        "state": {
+          "type": "keyword"
+        },
+        "issue_comments": {
+          "type": "nested",
+          "properties": {
+            "actor_login": {
+              "type": "text",
+              "analyzer": "custom_ngram"
+            },
+            "body": {
+              "type": "text",
+              "analyzer": "englando",
+              "fields": {
+                "shingles": {
+                  "type": "text",
+                  "analyzer": "custom_shingles"
+                }
+              }
+            },
+            "reactions": {
+              "type": "object"
+            },
+            "created_at": {
+              "type": "date"
+            },
+            "updated_at": {
+              "type": "date"
+            },
+            "id": {
+              "type": "long"
+            }
+          }
+        }
+      }
+    },
+    "pull_requests": {
+      "type": "nested",
+      "properties": {
+        "actor_login": {
+          "type": "text",
+          "analyzer": "custom_ngram"
+        },
+        "title": {
+          "type": "text",
+          "analyzer": "englando",
+          "fields": {
+            "shingles": {
+              "type": "text",
+              "analyzer": "custom_shingles"
+            }
+          }
+        },
+        "number": {
+          "type": "integer"
+        },
+        "body": {
+          "type": "text",
+          "analyzer": "englando",
+          "fields": {
+            "shingles": {
+              "type": "text",
+              "analyzer": "custom_shingles"
+            }
+          }
+        },
+        "created_at": {
+          "type": "date"
+        },
+        "updated_at": {
+          "type": "date"
+        },
+        "closed_at": {
+          "type": "date"
+        },
+        "merged_at": {
+          "type": "date"
+        },
+        "additions": {
+          "type": "integer"
+        },
+        "deletions": {
+          "type": "integer"
+        },
+        "changed_files": {
+          "type": "integer"
+        },
+        "id": {
+          "type": "long"
+        },
+        "state": {
+          "type": "keyword"
+        },
+        "labels": {
+          "type": "keyword"
+        },
+        "pull_request_reviews": {
+          "type": "nested",
+          "properties": {
+            "actor_login": {
+              "type": "text",
+              "analyzer": "custom_ngram"
+            },
+            "body": {
+              "type": "text",
+              "analyzer": "englando",
+              "fields": {
+                "shingles": {
+                  "type": "text",
+                  "analyzer": "custom_shingles"
+                }
+              }
+            },
+            "submitted_at": {
+              "type": "date"
+            },
+            "id": {
+              "type": "long"
+            },
+            "state": {
+              "type": "keyword"
+            },
+            "pull_request_review_comments": {
+              "type": "nested",
+              "properties": {
+                "actor_id": {
+                  "type": "text"
+                },
+                "body": {
+                  "type": "text",
+                  "analyzer": "englando",
+                  "fields": {
+                    "shingles": {
+                      "type": "text",
+                      "analyzer": "custom_shingles"
+                    }
+                  }
+                },
+                "reactions": {
+                  "type": "object"
+                },
+                "created_at": {
+                  "type": "date"
+                },
+                "updated_at": {
+                  "type": "date"
+                },
+                "id": {
+                  "type": "long"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

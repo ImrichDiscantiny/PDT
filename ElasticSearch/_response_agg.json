@@ -1,0 +1,573 @@
+{
+  "took": 6982,
+  "timed_out": false,
+  "_shards": {
+    "total": 3,
+    "successful": 3,
+    "skipped": 0,
+    "failed": 0
+  },
+  "hits": {
+    "total": {
+      "value": 213,
+      "relation": "eq"
+    },
+    "max_score": 1.0,
+    "hits": [
+      {
+        "_index": "repositories",
+        "_id": "442",
+        "_score": 1.0
+      },
+      {
+        "_index": "repositories",
+        "_id": "339",
+        "_score": 1.0
+      },
+      {
+        "_index": "repositories",
+        "_id": "559",
+        "_score": 1.0
+      },
+      {
+        "_index": "repositories",
+        "_id": "56",
+        "_score": 1.0
+      },
+      {
+        "_index": "repositories",
+        "_id": "81",
+        "_score": 1.0
+      },
+      {
+        "_index": "repositories",
+        "_id": "89",
+        "_score": 1.0
+      },
+      {
+        "_index": "repositories",
+        "_id": "62",
+        "_score": 1.0
+      },
+      {
+        "_index": "repositories",
+        "_id": "72",
+        "_score": 1.0
+      },
+      {
+        "_index": "repositories",
+        "_id": "41",
+        "_score": 1.0
+      },
+      {
+        "_index": "repositories",
+        "_id": "143",
+        "_score": 1.0
+      }
+    ]
+  },
+  "aggregations": {
+    "issues_month_histogram": {
+      "doc_count": 119319,
+      "filtered_agg": {
+        "doc_count": 31988,
+        "hist": {
+          "buckets": [
+            {
+              "key_as_string": "2014-01-01",
+              "key": 1388534400000,
+              "doc_count": 3,
+              "status": {
+                "count": 3,
+                "min": 450.0,
+                "max": 2448.0,
+                "avg": 1544.3333333333333,
+                "sum": 4633.0
+              }
+            },
+            {
+              "key_as_string": "2015-01-01",
+              "key": 1420070400000,
+              "doc_count": 1,
+              "status": {
+                "count": 1,
+                "min": 210.0,
+                "max": 210.0,
+                "avg": 210.0,
+                "sum": 210.0
+              }
+            },
+            {
+              "key_as_string": "2016-01-01",
+              "key": 1451606400000,
+              "doc_count": 15,
+              "status": {
+                "count": 15,
+                "min": 1484.0,
+                "max": 17943.0,
+                "avg": 7165.333333333333,
+                "sum": 107480.0
+              }
+            },
+            {
+              "key_as_string": "2017-01-01",
+              "key": 1483228800000,
+              "doc_count": 62,
+              "status": {
+                "count": 62,
+                "min": 1209.0,
+                "max": 32555.0,
+                "avg": 14848.129032258064,
+                "sum": 920584.0
+              }
+            },
+            {
+              "key_as_string": "2018-01-01",
+              "key": 1514764800000,
+              "doc_count": 138,
+              "status": {
+                "count": 138,
+                "min": 31.0,
+                "max": 50105.0,
+                "avg": 13834.31884057971,
+                "sum": 1909136.0
+              }
+            },
+            {
+              "key_as_string": "2019-01-01",
+              "key": 1546300800000,
+              "doc_count": 103,
+              "status": {
+                "count": 103,
+                "min": 968.0,
+                "max": 73725.0,
+                "avg": 24467.281553398057,
+                "sum": 2520130.0
+              }
+            },
+            {
+              "key_as_string": "2020-01-01",
+              "key": 1577836800000,
+              "doc_count": 216,
+              "status": {
+                "count": 216,
+                "min": 500.0,
+                "max": 107688.0,
+                "avg": 32506.546296296296,
+                "sum": 7021414.0
+              }
+            },
+            {
+              "key_as_string": "2021-01-01",
+              "key": 1609459200000,
+              "doc_count": 372,
+              "status": {
+                "count": 372,
+                "min": 81.0,
+                "max": 152818.0,
+                "avg": 48376.24462365591,
+                "sum": 1.7995963e7
+              }
+            },
+            {
+              "key_as_string": "2022-01-01",
+              "key": 1640995200000,
+              "doc_count": 929,
+              "status": {
+                "count": 929,
+                "min": 128.0,
+                "max": 208291.0,
+                "avg": 62140.90419806243,
+                "sum": 5.77289e7
+              }
+            },
+            {
+              "key_as_string": "2023-01-01",
+              "key": 1672531200000,
+              "doc_count": 30149,
+              "status": {
+                "count": 30149,
+                "min": 119.0,
+                "max": 251477.0,
+                "avg": 69738.34714252545,
+                "sum": 2.102541428e9
+              }
+            }
+          ]
+        },
+        "status": {
+          "count": 31988,
+          "min": 31.0,
+          "max": 251477.0,
+          "avg": 68486.61616856321,
+          "sum": 2.190749878e9
+        }
+      }
+    },
+    "releases_month_histogram": {
+      "doc_count": 1314,
+      "filtered_agg": {
+        "doc_count": 443,
+        "hist": {
+          "buckets": [
+            {
+              "key_as_string": "2023-07-01",
+              "key": 1688169600000,
+              "doc_count": 5
+            },
+            {
+              "key_as_string": "2023-08-01",
+              "key": 1690848000000,
+              "doc_count": 438
+            }
+          ]
+        }
+      }
+    },
+    "commits_day_histogram ": {
+      "doc_count": 413313,
+      "filtered_agg": {
+        "doc_count": 37874,
+        "hist": {
+          "buckets": [
+            {
+              "key_as_string": "2023-08-01",
+              "key": 1690848000000,
+              "doc_count": 2712
+            },
+            {
+              "key_as_string": "2023-08-02",
+              "key": 1690934400000,
+              "doc_count": 1256
+            },
+            {
+              "key_as_string": "2023-08-03",
+              "key": 1691020800000,
+              "doc_count": 1376
+            },
+            {
+              "key_as_string": "2023-08-04",
+              "key": 1691107200000,
+              "doc_count": 2070
+            },
+            {
+              "key_as_string": "2023-08-05",
+              "key": 1691193600000,
+              "doc_count": 220
+            },
+            {
+              "key_as_string": "2023-08-06",
+              "key": 1691280000000,
+              "doc_count": 148
+            },
+            {
+              "key_as_string": "2023-08-07",
+              "key": 1691366400000,
+              "doc_count": 1238
+            },
+            {
+              "key_as_string": "2023-08-08",
+              "key": 1691452800000,
+              "doc_count": 1454
+            },
+            {
+              "key_as_string": "2023-08-09",
+              "key": 1691539200000,
+              "doc_count": 2364
+            },
+            {
+              "key_as_string": "2023-08-10",
+              "key": 1691625600000,
+              "doc_count": 1365
+            },
+            {
+              "key_as_string": "2023-08-11",
+              "key": 1691712000000,
+              "doc_count": 1805
+            },
+            {
+              "key_as_string": "2023-08-12",
+              "key": 1691798400000,
+              "doc_count": 352
+            },
+            {
+              "key_as_string": "2023-08-13",
+              "key": 1691884800000,
+              "doc_count": 184
+            },
+            {
+              "key_as_string": "2023-08-14",
+              "key": 1691971200000,
+              "doc_count": 1315
+            },
+            {
+              "key_as_string": "2023-08-15",
+              "key": 1692057600000,
+              "doc_count": 1736
+            },
+            {
+              "key_as_string": "2023-08-16",
+              "key": 1692144000000,
+              "doc_count": 1595
+            },
+            {
+              "key_as_string": "2023-08-17",
+              "key": 1692230400000,
+              "doc_count": 2108
+            },
+            {
+              "key_as_string": "2023-08-18",
+              "key": 1692316800000,
+              "doc_count": 1698
+            },
+            {
+              "key_as_string": "2023-08-19",
+              "key": 1692403200000,
+              "doc_count": 447
+            },
+            {
+              "key_as_string": "2023-08-20",
+              "key": 1692489600000,
+              "doc_count": 308
+            },
+            {
+              "key_as_string": "2023-08-21",
+              "key": 1692576000000,
+              "doc_count": 2286
+            },
+            {
+              "key_as_string": "2023-08-22",
+              "key": 1692662400000,
+              "doc_count": 2511
+            },
+            {
+              "key_as_string": "2023-08-23",
+              "key": 1692748800000,
+              "doc_count": 2194
+            },
+            {
+              "key_as_string": "2023-08-24",
+              "key": 1692835200000,
+              "doc_count": 2839
+            },
+            {
+              "key_as_string": "2023-08-25",
+              "key": 1692921600000,
+              "doc_count": 2293
+            }
+          ]
+        }
+      }
+    },
+    "pull_requests_day_histogram": {
+      "doc_count": 9878,
+      "filtered_agg": {
+        "doc_count": 5142,
+        "hist": {
+          "buckets": [
+            {
+              "key_as_string": "2020-05-01",
+              "key": 1588291200000,
+              "doc_count": 1
+            },
+            {
+              "key_as_string": "2020-06-01",
+              "key": 1590969600000,
+              "doc_count": 0
+            },
+            {
+              "key_as_string": "2020-07-01",
+              "key": 1593561600000,
+              "doc_count": 0
+            },
+            {
+              "key_as_string": "2020-08-01",
+              "key": 1596240000000,
+              "doc_count": 0
+            },
+            {
+              "key_as_string": "2020-09-01",
+              "key": 1598918400000,
+              "doc_count": 0
+            },
+            {
+              "key_as_string": "2020-10-01",
+              "key": 1601510400000,
+              "doc_count": 0
+            },
+            {
+              "key_as_string": "2020-11-01",
+              "key": 1604188800000,
+              "doc_count": 0
+            },
+            {
+              "key_as_string": "2020-12-01",
+              "key": 1606780800000,
+              "doc_count": 0
+            },
+            {
+              "key_as_string": "2021-01-01",
+              "key": 1609459200000,
+              "doc_count": 0
+            },
+            {
+              "key_as_string": "2021-02-01",
+              "key": 1612137600000,
+              "doc_count": 0
+            },
+            {
+              "key_as_string": "2021-03-01",
+              "key": 1614556800000,
+              "doc_count": 0
+            },
+            {
+              "key_as_string": "2021-04-01",
+              "key": 1617235200000,
+              "doc_count": 0
+            },
+            {
+              "key_as_string": "2021-05-01",
+              "key": 1619827200000,
+              "doc_count": 0
+            },
+            {
+              "key_as_string": "2021-06-01",
+              "key": 1622505600000,
+              "doc_count": 0
+            },
+            {
+              "key_as_string": "2021-07-01",
+              "key": 1625097600000,
+              "doc_count": 0
+            },
+            {
+              "key_as_string": "2021-08-01",
+              "key": 1627776000000,
+              "doc_count": 0
+            },
+            {
+              "key_as_string": "2021-09-01",
+              "key": 1630454400000,
+              "doc_count": 0
+            },
+            {
+              "key_as_string": "2021-10-01",
+              "key": 1633046400000,
+              "doc_count": 0
+            },
+            {
+              "key_as_string": "2021-11-01",
+              "key": 1635724800000,
+              "doc_count": 0
+            },
+            {
+              "key_as_string": "2021-12-01",
+              "key": 1638316800000,
+              "doc_count": 0
+            },
+            {
+              "key_as_string": "2022-01-01",
+              "key": 1640995200000,
+              "doc_count": 0
+            },
+            {
+              "key_as_string": "2022-02-01",
+              "key": 1643673600000,
+              "doc_count": 0
+            },
+            {
+              "key_as_string": "2022-03-01",
+              "key": 1646092800000,
+              "doc_count": 0
+            },
+            {
+              "key_as_string": "2022-04-01",
+              "key": 1648771200000,
+              "doc_count": 2
+            },
+            {
+              "key_as_string": "2022-05-01",
+              "key": 1651363200000,
+              "doc_count": 0
+            },
+            {
+              "key_as_string": "2022-06-01",
+              "key": 1654041600000,
+              "doc_count": 1
+            },
+            {
+              "key_as_string": "2022-07-01",
+              "key": 1656633600000,
+              "doc_count": 1
+            },
+            {
+              "key_as_string": "2022-08-01",
+              "key": 1659312000000,
+              "doc_count": 0
+            },
+            {
+              "key_as_string": "2022-09-01",
+              "key": 1661990400000,
+              "doc_count": 1
+            },
+            {
+              "key_as_string": "2022-10-01",
+              "key": 1664582400000,
+              "doc_count": 4
+            },
+            {
+              "key_as_string": "2022-11-01",
+              "key": 1667260800000,
+              "doc_count": 2
+            },
+            {
+              "key_as_string": "2022-12-01",
+              "key": 1669852800000,
+              "doc_count": 4
+            },
+            {
+              "key_as_string": "2023-01-01",
+              "key": 1672531200000,
+              "doc_count": 4
+            },
+            {
+              "key_as_string": "2023-02-01",
+              "key": 1675209600000,
+              "doc_count": 7
+            },
+            {
+              "key_as_string": "2023-03-01",
+              "key": 1677628800000,
+              "doc_count": 11
+            },
+            {
+              "key_as_string": "2023-04-01",
+              "key": 1680307200000,
+              "doc_count": 16
+            },
+            {
+              "key_as_string": "2023-05-01",
+              "key": 1682899200000,
+              "doc_count": 29
+            },
+            {
+              "key_as_string": "2023-06-01",
+              "key": 1685577600000,
+              "doc_count": 79
+            },
+            {
+              "key_as_string": "2023-07-01",
+              "key": 1688169600000,
+              "doc_count": 714
+            },
+            {
+              "key_as_string": "2023-08-01",
+              "key": 1690848000000,
+              "doc_count": 4266
+            }
+          ]
+        }
+      }
+    }
+  }
+}

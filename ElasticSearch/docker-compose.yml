@@ -1,0 +1,90 @@
+version: "3"
+services:
+  es01:
+    image: docker.elastic.co/elasticsearch/elasticsearch:${STACK_VERSION}
+    container_name: es1
+    environment:
+      - node.name=es1
+      - node.roles=master,data
+      - discovery.seed_hosts=es2,es3
+      - cluster.initial_master_nodes=es1
+      - cluster.name=es-cluster
+      - bootstrap.memory_lock=true
+      - xpack.security.enabled=false
+      - xpack.monitoring.collection.enabled=true
+      - "ES_JAVA_OPTS=-Xms750m -Xmx750m"
+
+    mem_limit: ${MEM_LIMIT}
+
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - data1:/usr/share/elasticsearch/data
+    ports:
+      - ${ES_PORT}:9200
+    networks:
+      - elastic
+
+  es02:
+    image: docker.elastic.co/elasticsearch/elasticsearch:${STACK_VERSION}
+    container_name: es2
+    environment:
+      - node.name=es2
+      - node.roles=data
+      - discovery.seed_hosts=es1,es3
+      - cluster.initial_master_nodes=es1
+      - cluster.name=es-cluster
+      - bootstrap.memory_lock=true
+      - xpack.security.enabled=false
+      - xpack.monitoring.collection.enabled=true
+      - "ES_JAVA_OPTS=-Xms750m -Xmx750m"
+
+    mem_limit: ${MEM_LIMIT}
+
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - data2:/usr/share/elasticsearch/data
+    networks:
+      - elastic
+
+  es03:
+    image: docker.elastic.co/elasticsearch/elasticsearch:${STACK_VERSION}
+    container_name: es3
+    environment:
+      - node.name=es3
+      - node.roles=data
+      - discovery.seed_hosts=es1,es2
+      - cluster.initial_master_nodes=es1
+      - cluster.name=es-cluster
+      - bootstrap.memory_lock=true
+      - xpack.security.enabled=false
+      - xpack.monitoring.collection.enabled=true
+      - "ES_JAVA_OPTS=-Xms750m -Xmx750m"
+
+    mem_limit: ${MEM_LIMIT}
+
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - data3:/usr/share/elasticsearch/data
+    networks:
+      - elastic
+
+volumes:
+  data1:
+    driver: local
+  data2:
+    driver: local
+  data3:
+    driver: local
+
+networks:
+  elastic:
+    driver: bridge
